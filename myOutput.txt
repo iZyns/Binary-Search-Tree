@@ -1,0 +1,118 @@
+Initial data:
+  iii not tttt eee r not and jj r eee pp r sssss eee not tttt ooo ff m m y z $$ 
+copy constructor failed
+Tree Inorder:
+and eee ff iii jj m not ooo pp r sssss tttt y z 
+                        z
+                    y
+                tttt
+                        sssss
+                    r
+                        pp
+                            ooo
+            not
+                    m
+                jj
+        iii
+                ff
+            eee
+                and
+Retrieve --> and:  found
+Retrieve --> not:  found
+Retrieve --> sss:  not found
+Retrieve --> a:  not found
+Retrieve --> b:  not found
+Retrieve --> c:  not found
+Height    --> and:  1
+Height    --> not:  5
+Height    --> sss:  0
+Height    --> tttt:  4
+Height    --> ooo:  1
+Height    --> y:  2
+Height    --> a:  0
+Height    --> b:  0
+Height    --> c:  0
+T == T2?     not equal
+T != first?  not equal
+T == dup?    not equal
+                z
+                    y
+            tttt
+                    sssss
+                r
+                    pp
+        ooo
+                    not
+                m
+                    jj
+            iii
+                    ff
+                eee
+                    and
+Tree is empty? no
+Tree is empty? yes
+---------------------------------------------------------------
+Initial data:
+  b a c b a c $$ 
+Tree Inorder:
+a b c 
+            c
+        b
+            a
+Retrieve --> and:  not found
+Retrieve --> not:  not found
+Retrieve --> sss:  not found
+Retrieve --> a:  found
+Retrieve --> b:  found
+Retrieve --> c:  found
+Height    --> and:  0
+Height    --> not:  0
+Height    --> sss:  0
+Height    --> tttt:  0
+Height    --> ooo:  0
+Height    --> y:  0
+Height    --> a:  1
+Height    --> b:  2
+Height    --> c:  1
+T == T2?     not equal
+T != first?  not equal
+T == dup?    not equal
+            c
+        b
+            a
+Tree is empty? no
+Tree is empty? yes
+---------------------------------------------------------------
+Initial data:
+  c b a $$ 
+Tree Inorder:
+a b c 
+        c
+            b
+                a
+Retrieve --> and:  not found
+Retrieve --> not:  not found
+Retrieve --> sss:  not found
+Retrieve --> a:  found
+Retrieve --> b:  found
+Retrieve --> c:  found
+Height    --> and:  0
+Height    --> not:  0
+Height    --> sss:  0
+Height    --> tttt:  0
+Height    --> ooo:  0
+Height    --> y:  0
+Height    --> a:  1
+Height    --> b:  2
+Height    --> c:  3
+T == T2?     not equal
+T != first?  not equal
+T == dup?    not equal
+            c
+        b
+            a
+Tree is empty? no
+Tree is empty? yes
+---------------------------------------------------------------
+Initial data:
+   

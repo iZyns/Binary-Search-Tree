@@ -2,6 +2,7 @@
 
 using namespace std;
 
+// operator outstream
 ostream &operator<<(ostream &out, const BinTree &binTree) {
   if (binTree.root == NULL) {
     return out;
@@ -10,7 +11,7 @@ ostream &operator<<(ostream &out, const BinTree &binTree) {
   out << endl;
   return out;
 }
-
+// helper function for operator outsrtream
 void BinTree::inorderHelper(ostream &out, Node *curr) const {
   if (curr == NULL) {
     return;
@@ -20,14 +21,16 @@ void BinTree::inorderHelper(ostream &out, Node *curr) const {
     inorderHelper(out, curr->right);
   }
 }
-
+// constructor
 BinTree::BinTree() { this->root = NULL; }
 
+// copy constructor
 BinTree::BinTree(const BinTree &otherTree) {
   this->root = NULL;
   *this = otherTree;
 }
 
+// assignment operator makes a deep copy of the other tree
 BinTree &BinTree::operator=(const BinTree &otherTree) {
   if (this->isEmpty() || otherTree.isEmpty()) {
     this->makeEmpty();
@@ -41,6 +44,7 @@ BinTree &BinTree::operator=(const BinTree &otherTree) {
   return *this;
 }
 
+// helper function for assignment operator
 void BinTree::copyRecursive(Node *otherTree, Node *&tree) {
   if (otherTree == NULL) {
     tree = NULL;
@@ -55,18 +59,22 @@ void BinTree::copyRecursive(Node *otherTree, Node *&tree) {
   }
 }
 
+// destructor
 BinTree::~BinTree() {
   this->root = NULL;
   makeEmpty();
 }
 
+// isEmpty function checking if the tree is empty
 bool BinTree::isEmpty() const { return this->root == NULL; }
 
+// makeEmpty function makes the tree empty
 void BinTree::makeEmpty() {
   makeEmptyRecursive(this->root);
   this->root = NULL;
 }
 
+// helper function for the makeEmpty function
 void BinTree::makeEmptyRecursive(Node *&curr) {
   if (curr == NULL) {
     return;
@@ -82,10 +90,12 @@ void BinTree::makeEmptyRecursive(Node *&curr) {
   curr = NULL;
 }
 
+// insert function to insert a new node into the tree
 bool BinTree::insert(NodeData *data) {
   return insertRecursive(this->root, data);
 }
 
+// helper function for insert function
 bool BinTree::insertRecursive(Node *&curr, NodeData *data) {
   if (curr == NULL) {
     curr = new Node;
@@ -104,11 +114,13 @@ bool BinTree::insertRecursive(Node *&curr, NodeData *data) {
   return true;
 }
 
+// retrieve function to retrieve a data from the tree
 bool BinTree::retrieve(const NodeData &takeData, NodeData *&theData) {
   retrieveRecursive(this->root, takeData, theData);
   return theData != NULL;
 }
 
+// helper function for retrieve
 bool BinTree::retrieveRecursive(Node *&curr, const NodeData &takeData,
                                 NodeData *&theData) const {
   if (curr == NULL) {
@@ -128,10 +140,12 @@ bool BinTree::retrieveRecursive(Node *&curr, const NodeData &takeData,
   return true;
 }
 
+// getHeight function to get the height of a data in the tree
 int BinTree::getHeight(const NodeData &data) const {
   return getHeightRecursive(data, this->root);
 }
 
+// helper function for getHeight
 int BinTree::getHeightRecursive(const NodeData &data, Node *curr) const {
   if (curr == NULL) {
     return 0;
@@ -151,8 +165,17 @@ int BinTree::heightRecursiveHelp(Node *curr) const {
          max(heightRecursiveHelp(curr->left), heightRecursiveHelp(curr->right));
 }
 
+//------------------------- displaySideways ---------------------------------
+// Displays a binary tree as though you are viewing it from the side;
+// hard coded displaying to standard output.
+// Preconditions: NONE
+// Postconditions: BinTree remains unchanged.
 void BinTree::displaySideways() const { sideways(root, 0); }
 
+//---------------------------- Sideways -------------------------------------
+// Helper method for displaySideways
+// Preconditions: NONE
+// Postconditions: BinTree remains unchanged.
 void BinTree::sideways(Node *current, int level) const {
   if (current != NULL) {
     level++;
@@ -165,6 +188,7 @@ void BinTree::sideways(Node *current, int level) const {
   }
 }
 
+// operator== to check if the two trees are the same
 bool BinTree::operator==(const BinTree &otherTree) const {
   if ((this->isEmpty() && !otherTree.isEmpty()) ||
       (!this->isEmpty() && otherTree.isEmpty())) {
@@ -178,6 +202,7 @@ bool BinTree::operator==(const BinTree &otherTree) const {
   }
 }
 
+// helper function for operator==
 bool BinTree::equalRecursive(Node *node1, Node *node2) const {
   if (node1 == NULL && node2 == NULL) {
     return true;
@@ -192,16 +217,19 @@ bool BinTree::equalRecursive(Node *node1, Node *node2) const {
          equalRecursive(node1->right, node2->right);
 }
 
+// operator!= function to check if the two trees are not the same
 bool BinTree::operator!=(const BinTree &otherTree) const {
   return !(*this == otherTree);
 }
 
+// bst to array function to convert from bst to array
 void BinTree::bstreeToArray(NodeData *arr[]) {
   int index = 0;
   arrayInOrder(root, arr, index);
   makeEmpty();
 }
 
+// helper function for bstreeToArray
 void BinTree::arrayInOrder(Node *curr, NodeData *arr[], int &index) {
   if (curr == nullptr) {
     return;
@@ -216,6 +244,7 @@ void BinTree::arrayInOrder(Node *curr, NodeData *arr[], int &index) {
   }
 }
 
+// array to bstree function to convert from array to bstree
 void BinTree::arrayToBSTree(NodeData *arr[]) {
   makeEmpty();  // make tree empty to make sure that the tree is empty
   int high = 0; // high is the highest
@@ -228,6 +257,7 @@ void BinTree::arrayToBSTree(NodeData *arr[]) {
   }
 }
 
+// helper function for arrayToBSTree
 void BinTree::arrayBstRecursive(Node *curr, NodeData *arr[], int low,
                                 int high) {
   if (low > high) {
